@@ -98,13 +98,14 @@ const HomePage = () => {
               </Quote>
               <Quote align="right">Steve Jobs</Quote>
             </div>
-            <RelativeBlock padding={"7px 0 0 "}>
+            <RelativeBlock padding={"65px 0 0 "}>
               <p
                 className={css`
                   position: absolute;
                   top: 0;
-                  left: -7px;
+                  left: -28px;
                   margin: 0;
+                  width: 100px;
                 `}
               >
                 <HeroText>Let’s go</HeroText>
