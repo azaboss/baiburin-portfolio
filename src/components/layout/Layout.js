@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 import "normalize.css";
 import { colors } from "../../constants/colors";
 import Navbar from "../navbar/Navbar";
-import { Global } from "@emotion/react";
-import { css } from "@emotion/css";
+import "../../css/typography.css";
+
 const Wrapper = styled.div`
   color: ${colors.primaryText};
   background-color: #181818;
@@ -31,14 +31,6 @@ const Layout = ({ children }) => {
     <Wrapper>
       <Container>
         <Content>
-          <Global
-            styles={css`
-              @font-face {
-                font-family: "Gilroy Light,sans-serif";
-                src: url("../../fonts/Gilroy-Light.otf") format("otf");
-              }
-            `}
-          />
           <Navbar />
           <MainContent>{children}</MainContent>
           <div style={{ background: "green", marginTop: "auto" }}>

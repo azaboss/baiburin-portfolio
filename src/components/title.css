@@ -1,9 +1,0 @@
-@font-face {
-    font-family: 'Eh_cyr';
-    src: url('../fonts/Eh_cyr.woff2') format('woff2');
-}
-
-.title{
-    font-family: 'Eh_cyr';
-    font-size: 25px;
-}
