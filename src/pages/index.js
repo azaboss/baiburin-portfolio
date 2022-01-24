@@ -6,6 +6,7 @@ import Instagram from "../images/svg/inst.inline.svg";
 import Vk from "../images/svg/vk.inline.svg";
 import Twitter from "../images/svg/twitter.inline.svg";
 import LongArrow from "../images/svg/longarrow.inline.svg";
+import ArrowRight from "../images/svg/arrow_right.inline.svg";
 import { colors } from "../constants/colors";
 import { css } from "@emotion/css";
 import Profile from "../images/profile.jpg";
@@ -23,6 +24,7 @@ const FlexContainer = styled.div`
   justify-content: ${(props) => props.justifyContent || "flex-start"};
   padding: ${(props) => props.padding || 0};
   margin: ${(props) => props.margin || 0};
+  width: ${(props) => (props.width ? props.width : "auto")};
   svg:not(last-child) {
     margin-bottom: 25px;
   }
@@ -86,6 +88,47 @@ const MoreLink = styled.a`
   text-decoration: none;
   cursor: pointer;
   margin-top: 50px;
+`;
+
+const SectionText = styled.p`
+  width: 600px;
+  font-family: "Gilroy Light", sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.04em;
+`;
+
+const Tab = styled.div`
+  padding: 25px;
+  border-color: #56595e;
+  border-bottom: 1px solid;
+
+  font-family: "Gilroy Light", sans-serif;
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  &:first-child {
+    border-top: 1px solid;
+  }
+
+  & div {
+    position: relative;
+    transition: all 0.2s linear;
+    overflow: hidden;
+    & svg {
+      transition: all 0.1s linear;
+      margin-bottom: 0;
+      transform: translateX(-25px);
+    }
+  }
+
+  & div:hover {
+    transform: translateX(20px);
+    svg {
+      transform: translateX(0);
+    }
+  }
 `;
 
 const HomePage = () => {
@@ -220,15 +263,7 @@ const HomePage = () => {
       <Section>
         <Title title="ABOUT ME" />
         <FlexContainer justifyContent="flex-end">
-          <p
-            className={css`
-              width: 600px;
-              font-family: "Gilroy Light", sans-serif;
-              font-size: 16px;
-              line-height: 19px;
-              letter-spacing: 0.04em;
-            `}
-          >
+          <SectionText>
             UI/UX дизайнер с опытом работы разработчиком и IT аналитиком.
             Небольшие знания Java, JS, CSS, HTML и прочего дают мне возможность
             проектировать дизайн, наиболее продуктивный и жизнеспособный как для
@@ -245,7 +280,7 @@ const HomePage = () => {
             технологии, логику, аналитику. Поэтому и решил развиваться именно в
             UX/UI дизайне. Сильно мотивирован развиваться и мечтаю в будущем
             разрабатывать дизайн, который повлияет на весь Мир.
-          </p>
+          </SectionText>
         </FlexContainer>
         <p
           className={css`
@@ -289,6 +324,53 @@ const HomePage = () => {
         </FlexContainer>
         <FlexContainer justifyContent="flex-end">
           <MoreLink>More about me -></MoreLink>
+        </FlexContainer>
+      </Section>
+      {/*  END ABOUT SECTION*/}
+      {/*  PROJECTS*/}
+      <Section>
+        <Title title="SOME OF my" withIcon={false} />
+        <Title title="projects" margin="0 0 0 100px" />
+        <FlexContainer justifyContent="flex-end">
+          <SectionText>
+            Я специализируюсь на разработке сложных интерфейсов мобильных и веб
+            приложений, дэшбордов, систем управления и п.р. Но при желании
+            справлюсь и с сайтами, лендингами а иногда даже логотипами и
+            визуалами.
+          </SectionText>
+        </FlexContainer>
+        <FlexContainer width={600}>
+          <StaticImage
+            src="../images/placeholder.png"
+            alt="Closet e-commerce"
+            placeholder="blurred"
+            layout="constrained"
+            className={css`
+              max-width: 550px;
+            `}
+          />
+          <div>
+            <Tab>
+              <div>
+                <ArrowRight /> Smart Remont CRM system
+              </div>
+            </Tab>
+            <Tab>
+              <div>
+                <ArrowRight /> Clockster HRM system
+              </div>
+            </Tab>
+            <Tab>
+              <div>
+                <ArrowRight /> Smart Remont Mobile App
+              </div>
+            </Tab>
+            <Tab>
+              <div>
+                <ArrowRight /> 1992.Closet E-commerce website
+              </div>
+            </Tab>
+          </div>
         </FlexContainer>
       </Section>
     </Layout>
