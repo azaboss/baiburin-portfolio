@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import Layout from "../components/layout/Layout";
 import Title from "../components/Title";
 import styled from "@emotion/styled";
@@ -9,9 +10,9 @@ import LongArrow from "../images/svg/longarrow.inline.svg";
 import ArrowRight from "../images/svg/arrow_right.inline.svg";
 import { colors } from "../constants/colors";
 import { css } from "@emotion/css";
-import Profile from "../images/profile.jpg";
 import { StaticImage } from "gatsby-plugin-image";
 import List from "../components/List";
+import Closet from "../images/placeholder.png";
 // markup
 
 const Section = styled.section`
@@ -100,38 +101,122 @@ const SectionText = styled.p`
 
 const Tab = styled.div`
   padding: 25px;
-  border-color: #56595e;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #56595e;
 
   font-family: "Gilroy Light", sans-serif;
   font-size: 24px;
   line-height: 29px;
   letter-spacing: 0.04em;
   cursor: pointer;
-  &:first-child {
-    border-top: 1px solid;
+  transition: all 0.1s linear;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  &:first-of-type {
+    border-top: 1px solid #56595e;
+  }
+
+  & div.active {
+    transform: translateX(20px);
+
+    svg {
+      transform: translateX(0);
+    }
   }
 
   & div {
+    display: flex;
     position: relative;
     transition: all 0.2s linear;
     overflow: hidden;
     & svg {
       transition: all 0.1s linear;
       margin-bottom: 0;
+      margin-right: 15px;
       transform: translateX(-25px);
-    }
-  }
-
-  & div:hover {
-    transform: translateX(20px);
-    svg {
-      transform: translateX(0);
     }
   }
 `;
 
+const ServicesItem = styled.div`
+  display: flex;
+  align-items: flex-end;
+  font-family: "Gilroy Light", sans-serif;
+  border-bottom: 1px solid #c5cad0;
+
+  overflow: hidden;
+  & span {
+    min-width: 165px;
+    font-weight: 600;
+    font-size: 144px;
+    line-height: 176px;
+    text-transform: uppercase;
+    margin-right: 96px;
+    transform: translateY(35%);
+  }
+  & p {
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 29px;
+
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+
+    color: #c5cad0;
+    margin: 0;
+    padding-bottom: 26px;
+  }
+`;
+
+const ServicesType = styled.div`
+  padding: 10px;
+  color: #c5cad0;
+  border: 1px solid #c5cad0;
+  border-radius: 4px;
+  font-family: "Gilroy Light", sans-serif;
+
+  font-size: 14px;
+  line-height: 17px;
+
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+`;
+
 const HomePage = () => {
+  const [activeTab, setActiveTab] = useState(0);
+
+  const tabs = [
+    {
+      id: 1,
+      title: "Smart Remont CRM system",
+      imgSrc:
+        "https://images.unsplash.com/photo-1594202304070-70aed1ce9c64?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+    },
+    {
+      id: 2,
+      title: "Clockster HRM system",
+      imgSrc:
+        "https://images.unsplash.com/photo-1642901798360-dcc1f06f5aa3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    },
+    {
+      id: 3,
+      title: "Smart Remont Mobile App",
+      imgSrc:
+        "https://images.unsplash.com/photo-1576289412237-698ae5427f27?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+    },
+    {
+      id: 4,
+      title: "1992.Closet E-commerce website",
+      imgSrc: Closet,
+    },
+  ];
+
+  const handleClick = (index) => {
+    setActiveTab(index);
+  };
+
   return (
     <Layout>
       {/*HERO SECTION*/}
@@ -259,6 +344,7 @@ const HomePage = () => {
         </RelativeBlock>
       </Section>
       {/*  END PHOTO*/}
+
       {/*  ABOUT SECTION*/}
       <Section>
         <Title title="ABOUT ME" />
@@ -327,6 +413,7 @@ const HomePage = () => {
         </FlexContainer>
       </Section>
       {/*  END ABOUT SECTION*/}
+
       {/*  PROJECTS*/}
       <Section>
         <Title title="SOME OF my" withIcon={false} />
@@ -339,39 +426,97 @@ const HomePage = () => {
             визуалами.
           </SectionText>
         </FlexContainer>
-        <FlexContainer width={600}>
-          <StaticImage
-            src="../images/placeholder.png"
-            alt="Closet e-commerce"
-            placeholder="blurred"
-            layout="constrained"
+        <FlexContainer style={{ justifyContent: "space-between" }}>
+          <div
             className={css`
-              max-width: 550px;
+              width: 550px;
+              height: 600px;
+              position: relative;
+              & img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: all 0.2s linear;
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                transform: scale(0.9);
+              }
+
+              & img.active {
+                opacity: 1;
+                transform: scale(1);
+              }
             `}
-          />
-          <div>
-            <Tab>
-              <div>
-                <ArrowRight /> Smart Remont CRM system
-              </div>
-            </Tab>
-            <Tab>
-              <div>
-                <ArrowRight /> Clockster HRM system
-              </div>
-            </Tab>
-            <Tab>
-              <div>
-                <ArrowRight /> Smart Remont Mobile App
-              </div>
-            </Tab>
-            <Tab>
-              <div>
-                <ArrowRight /> 1992.Closet E-commerce website
-              </div>
-            </Tab>
+          >
+            {tabs.map((tab, i) => (
+              <img
+                key={tab.id}
+                src={tab.imgSrc}
+                alt={tab.title}
+                className={tab.id === activeTab + 1 ? "active" : ""}
+              />
+            ))}
+          </div>
+          <div
+            className={css`
+              width: 600px;
+            `}
+          >
+            {tabs.map((tab, i) => (
+              <Tab
+                key={tab.id}
+                onClick={() => handleClick(i)}
+                className={css`
+                  background: ${i === activeTab
+                    ? "rgba(255, 255, 255, 0.08)"
+                    : "none"};
+                `}
+              >
+                <div className={i === activeTab ? "active" : ""}>
+                  <ArrowRight /> {tab.title}
+                </div>
+              </Tab>
+            ))}
+            <FlexContainer justifyContent="flex-end">
+              <MoreLink>More projects -></MoreLink>
+            </FlexContainer>
           </div>
         </FlexContainer>
+      </Section>
+      {/*  END PROJECTS*/}
+      <Section>
+        <Title title="SERVICES" margin="0 0 0 100px" />
+        <div>
+          <ServicesItem>
+            <span>01</span>
+            <p>websites</p>
+          </ServicesItem>
+          <ServicesItem>
+            <span>02</span>
+            <p>E-commerce</p>
+          </ServicesItem>
+          <ServicesItem>
+            <span>03</span>
+            <p>Mobile apps</p>
+          </ServicesItem>
+          <ServicesItem>
+            <span>04</span>
+            <p>Logo and branding</p>
+          </ServicesItem>
+        </div>
+        <FlexContainer justifyContent="space-between" margin="25px 0 0">
+          <ServicesType>brifing</ServicesType>
+          <ServicesType>UX/Analytics</ServicesType>
+          <ServicesType>Design Concept</ServicesType>
+          <ServicesType>Design all pages</ServicesType>
+          <ServicesType>responsiveness</ServicesType>
+          <ServicesType>development</ServicesType>
+        </FlexContainer>
+      </Section>
+      <Section>
+        <Title title="My sKILLS" />
       </Section>
     </Layout>
   );

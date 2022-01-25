@@ -22,8 +22,8 @@ const ListITem = styled.li`
 const List = ({ list = [] }) => {
   return (
     <InnerList>
-      {list.map((item) => (
-        <ListITem>{item}</ListITem>
+      {list.map((item, i) => (
+        <ListITem key={i}>{item}</ListITem>
       ))}
     </InnerList>
   );
