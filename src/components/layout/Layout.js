@@ -4,6 +4,7 @@ import "normalize.css";
 import { colors } from "../../constants/colors";
 import Navbar from "../navbar/Navbar";
 import "../../css/typography.css";
+import Footer from "../footer";
 
 const Wrapper = styled.div`
   color: ${colors.primaryText};
@@ -33,9 +34,7 @@ const Layout = ({ children }) => {
         <Content>
           <Navbar />
           <MainContent>{children}</MainContent>
-          <div style={{ background: "green", marginTop: "auto" }}>
-            <h1>footer</h1>
-          </div>
+          <Footer />
         </Content>
       </Container>
     </Wrapper>

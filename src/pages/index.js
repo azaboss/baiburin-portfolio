@@ -1,222 +1,57 @@
 import * as React from "react";
-import { useState } from "react";
 import Layout from "../components/layout/Layout";
 import Title from "../components/Title";
-import styled from "@emotion/styled";
 import Instagram from "../images/svg/inst.inline.svg";
 import Vk from "../images/svg/vk.inline.svg";
 import Twitter from "../images/svg/twitter.inline.svg";
 import LongArrow from "../images/svg/longarrow.inline.svg";
-import ArrowRight from "../images/svg/arrow_right.inline.svg";
 import { colors } from "../constants/colors";
 import { css } from "@emotion/css";
-import { StaticImage } from "gatsby-plugin-image";
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 import List from "../components/List";
-import Closet from "../images/placeholder.png";
+import {
+  BlockTitle,
+  FlexContainer,
+  HeroText,
+  MoreLink,
+  Quote,
+  RelativeBlock,
+  Section,
+  SectionText,
+  ServicesItem,
+  ServicesType,
+  Tab,
+  WorkBlock,
+} from "../components/styledComponents";
+import Slider from "../components/Slider";
+import { graphql, useStaticQuery } from "gatsby";
+import { useState } from "react";
 // markup
-
-const Section = styled.section`
-  margin-top: 100px;
-`;
-
-const FlexContainer = styled.div`
-  display: flex;
-  flex-direction: ${(props) => props.direction || "row"};
-  justify-content: ${(props) => props.justifyContent || "flex-start"};
-  padding: ${(props) => props.padding || 0};
-  margin: ${(props) => props.margin || 0};
-  width: ${(props) => (props.width ? props.width : "auto")};
-  svg:not(last-child) {
-    margin-bottom: 25px;
-  }
-`;
-
-const HeroText = styled.span`
-  display: inline-block;
-  font-family: "Gilroy", sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  margin: 0;
-  transform: rotate(-90deg);
-  color: ${colors.primaryText};
-`;
-
-const Quote = styled.p`
-  font-family: "Gilroy", sans-serif;
-  font-size: 24px;
-  font-weight: 300;
-  color: ${colors.primaryText};
-  letter-spacing: 0.04em;
-  text-align: ${(props) => props.align || "left"};
-`;
-
-const RelativeBlock = styled.div`
-  position: relative;
-  padding: ${(props) => props.padding};
-`;
-
-const BlockTitle = styled.h3`
-  font-family: "Gilroy", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 29px;
-`;
-
-const WorkBlock = styled.div`
-  font-family: "Gilroy Light", sans-serif;
-  h3 {
-    margin: 10px 0 0 100px;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 29px;
-  }
-
-  p {
-    margin: 10px 0;
-    font-size: 16px;
-    line-height: 19px;
-  }
-`;
-
-const MoreLink = styled.a`
-  font-family: "Gilroy Light", sans-serif;
-  font-size: 18px;
-  line-height: 22px;
-  color: #6191ef;
-  text-decoration: none;
-  cursor: pointer;
-  margin-top: 50px;
-`;
-
-const SectionText = styled.p`
-  width: 600px;
-  font-family: "Gilroy Light", sans-serif;
-  font-size: 16px;
-  line-height: 19px;
-  letter-spacing: 0.04em;
-`;
-
-const Tab = styled.div`
-  padding: 25px;
-  border-bottom: 1px solid #56595e;
-
-  font-family: "Gilroy Light", sans-serif;
-  font-size: 24px;
-  line-height: 29px;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  transition: all 0.1s linear;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.08);
-  }
-
-  &:first-of-type {
-    border-top: 1px solid #56595e;
-  }
-
-  & div.active {
-    transform: translateX(20px);
-
-    svg {
-      transform: translateX(0);
+const tabsQuery = graphql`
+  {
+    allContentfulPortfolio {
+      nodes {
+        title
+        id
+        image {
+          gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+        }
+      }
     }
   }
-
-  & div {
-    display: flex;
-    position: relative;
-    transition: all 0.2s linear;
-    overflow: hidden;
-    & svg {
-      transition: all 0.1s linear;
-      margin-bottom: 0;
-      margin-right: 15px;
-      transform: translateX(-25px);
-    }
-  }
-`;
-
-const ServicesItem = styled.div`
-  display: flex;
-  align-items: flex-end;
-  font-family: "Gilroy Light", sans-serif;
-  border-bottom: 1px solid #c5cad0;
-
-  overflow: hidden;
-  & span {
-    min-width: 165px;
-    font-weight: 600;
-    font-size: 144px;
-    line-height: 176px;
-    text-transform: uppercase;
-    margin-right: 96px;
-    transform: translateY(35%);
-  }
-  & p {
-    font-weight: 300;
-    font-size: 24px;
-    line-height: 29px;
-
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-
-    color: #c5cad0;
-    margin: 0;
-    padding-bottom: 26px;
-  }
-`;
-
-const ServicesType = styled.div`
-  padding: 10px;
-  color: #c5cad0;
-  border: 1px solid #c5cad0;
-  border-radius: 4px;
-  font-family: "Gilroy Light", sans-serif;
-
-  font-size: 14px;
-  line-height: 17px;
-
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
 `;
 
 const HomePage = () => {
+  const data = useStaticQuery(tabsQuery);
+  const tabs = data.allContentfulPortfolio.nodes;
   const [activeTab, setActiveTab] = useState(0);
-
-  const tabs = [
-    {
-      id: 1,
-      title: "Smart Remont CRM system",
-      imgSrc:
-        "https://images.unsplash.com/photo-1594202304070-70aed1ce9c64?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    },
-    {
-      id: 2,
-      title: "Clockster HRM system",
-      imgSrc:
-        "https://images.unsplash.com/photo-1642901798360-dcc1f06f5aa3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-    },
-    {
-      id: 3,
-      title: "Smart Remont Mobile App",
-      imgSrc:
-        "https://images.unsplash.com/photo-1576289412237-698ae5427f27?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    },
-    {
-      id: 4,
-      title: "1992.Closet E-commerce website",
-      imgSrc: Closet,
-    },
-  ];
-
   const handleClick = (index) => {
     setActiveTab(index);
+    console.log(index, activeTab);
   };
 
+  const image = tabs[activeTab];
+  console.log(image, "image");
   return (
     <Layout>
       {/*HERO SECTION*/}
@@ -370,7 +205,7 @@ const HomePage = () => {
         </FlexContainer>
         <p
           className={css`
-            font-family: "Gilroy Light";
+            font-family: "Gilroy Light", sans-serif;
 
             font-size: 24px;
             line-height: 29px;
@@ -432,33 +267,19 @@ const HomePage = () => {
               width: 550px;
               height: 600px;
               position: relative;
-              & img {
+            `}
+          >
+            <GatsbyImage
+              alt={image.title}
+              image={image.image.gatsbyImageData}
+              className={css`
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                transition: all 0.2s linear;
-                position: absolute;
-                top: 0;
-                left: 0;
-                opacity: 0;
-                transform: scale(0.9);
-              }
-
-              & img.active {
-                opacity: 1;
-                transform: scale(1);
-              }
-            `}
-          >
-            {tabs.map((tab, i) => (
-              <img
-                key={tab.id}
-                src={tab.imgSrc}
-                alt={tab.title}
-                className={tab.id === activeTab + 1 ? "active" : ""}
-              />
-            ))}
+              `}
+            />
           </div>
+
           <div
             className={css`
               width: 600px;
@@ -475,7 +296,8 @@ const HomePage = () => {
                 `}
               >
                 <div className={i === activeTab ? "active" : ""}>
-                  <ArrowRight /> {tab.title}
+                  {/*<ArrowRight /> {tab.title}*/}
+                  {tab.title}
                 </div>
               </Tab>
             ))}
