@@ -8,6 +8,7 @@ import LongArrow from "../images/svg/longarrow.inline.svg";
 import { colors } from "../constants/colors";
 import { css } from "@emotion/css";
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
+import ArrowRight from "../images/svg/arrow_right.inline.svg";
 import List from "../components/List";
 import {
   BlockTitle,
@@ -296,7 +297,7 @@ const HomePage = () => {
                 `}
               >
                 <div className={i === activeTab ? "active" : ""}>
-                  {/*<ArrowRight /> {tab.title}*/}
+                  <ArrowRight />
                   {tab.title}
                 </div>
               </Tab>
