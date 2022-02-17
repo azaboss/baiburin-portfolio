@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import Layout from "../components/layout/Layout";
 import Title from "../components/Title";
 import Instagram from "../images/svg/inst.inline.svg";
@@ -10,6 +11,7 @@ import { css } from "@emotion/css";
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 import ArrowRight from "../images/svg/arrow_right.inline.svg";
 import List from "../components/List";
+import slugify from "slugify";
 import {
   BlockTitle,
   FlexContainer,
@@ -24,9 +26,8 @@ import {
   Tab,
   WorkBlock,
 } from "../components/styledComponents";
-import Slider from "../components/Slider";
 import { graphql, useStaticQuery } from "gatsby";
-import { useState } from "react";
+import Link from "gatsby-link";
 // markup
 const tabsQuery = graphql`
   {
@@ -52,7 +53,7 @@ const HomePage = () => {
   };
 
   const image = tabs[activeTab];
-  console.log(image, "image");
+  const slug = slugify(image.title, { lower: true });
   return (
     <Layout>
       {/*HERO SECTION*/}
@@ -270,15 +271,17 @@ const HomePage = () => {
               position: relative;
             `}
           >
-            <GatsbyImage
-              alt={image.title}
-              image={image.image.gatsbyImageData}
-              className={css`
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-              `}
-            />
+            <Link to={`/${slug}`}>
+              <GatsbyImage
+                alt={image.title}
+                image={image.image.gatsbyImageData}
+                className={css`
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                `}
+              />
+            </Link>
           </div>
 
           <div
