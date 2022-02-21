@@ -6,7 +6,7 @@ import { FlexContainer } from "../styledComponents";
 const StyledFooter = styled.footer`
   padding: 15px 0;
   font-family: "Gilroy Light", sans-serif;
-
+  margin-top: 170px;
   & p {
     & span {
       margin-left: 30px;

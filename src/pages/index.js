@@ -269,19 +269,49 @@ const HomePage = () => {
               width: 550px;
               height: 600px;
               position: relative;
+              overflow: hidden;
+
+              & .mask {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: rgba(0, 0, 0, 0.2);
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                z-index: 10;
+                pointer-events: none;
+                transition: all 0.2s linear;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                & a {
+                  color: #fff;
+                }
+              }
+
+              &:hover {
+                & .mask {
+                  opacity: 1;
+                  pointer-events: all;
+                }
+              }
             `}
           >
-            <Link to={`/${slug}`}>
-              <GatsbyImage
-                alt={image.title}
-                image={image.image.gatsbyImageData}
-                className={css`
-                  width: 100%;
-                  height: 100%;
-                  object-fit: cover;
-                `}
-              />
-            </Link>
+            <GatsbyImage
+              alt={image.title}
+              image={image.image.gatsbyImageData}
+              className={css`
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              `}
+            />
+
+            <div className="mask">
+              <Link to={`/${slug}`}>visit project</Link>
+            </div>
           </div>
 
           <div
@@ -306,7 +336,9 @@ const HomePage = () => {
               </Tab>
             ))}
             <FlexContainer justifyContent="flex-end">
-              <MoreLink>More projects -></MoreLink>
+              <MoreLink href="https://behance.net" target="_blank">
+                More projects ->
+              </MoreLink>
             </FlexContainer>
           </div>
         </FlexContainer>
@@ -340,9 +372,6 @@ const HomePage = () => {
           <ServicesType>responsiveness</ServicesType>
           <ServicesType>development</ServicesType>
         </FlexContainer>
-      </Section>
-      <Section>
-        <Title title="My sKILLS" />
       </Section>
     </Layout>
   );
