@@ -2,13 +2,9 @@ import React from "react";
 import Layout from "../components/layout/Layout";
 import styled from "@emotion/styled";
 import { colors } from "../constants/colors";
-import {
-  FlexContainer,
-  Section,
-  SectionText,
-} from "../components/styledComponents";
+import { FlexContainer, SectionText } from "../components/styledComponents";
 import Arrow from "../images/svg/arrow.inline.svg";
-import { graphql, useStaticQuery } from "gatsby";
+import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { css } from "@emotion/css";
 

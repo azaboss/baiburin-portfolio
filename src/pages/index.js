@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Layout from "../components/layout/Layout";
 import Title from "../components/Title";
 import Instagram from "../images/svg/inst.inline.svg";
@@ -28,6 +28,7 @@ import {
 } from "../components/styledComponents";
 import { graphql, useStaticQuery } from "gatsby";
 import Link from "gatsby-link";
+import { gsap } from "gsap";
 // markup
 const tabsQuery = graphql`
   {
@@ -54,10 +55,16 @@ const HomePage = () => {
 
   const image = tabs[activeTab];
   const slug = slugify(image.title, { lower: true });
+  const heroRef = useRef();
+
+  useEffect(() => {
+    gsap.to(heroRef.current, { opacity: 1, y: 50 });
+  }, []);
+
   return (
     <Layout>
       {/*HERO SECTION*/}
-      <Section>
+      <Section ref={heroRef} style={{ opacity: 0 }}>
         <Title title="UI/UX DESIGNER" withIcon={false} />
         <FlexContainer justifyContent="space-between" margin="65px 0 0">
           <RelativeBlock>
@@ -246,7 +253,20 @@ const HomePage = () => {
           </WorkBlock>
         </FlexContainer>
         <FlexContainer justifyContent="flex-end">
-          <MoreLink>More about me -></MoreLink>
+          <Link
+            to="/about"
+            className={css`
+              font-family: "Gilroy Light", sans-serif;
+              font-size: 18px;
+              line-height: 22px;
+              color: #6191ef;
+              text-decoration: none;
+              cursor: pointer;
+              margin-top: 50px;
+            `}
+          >
+            More about me ->
+          </Link>
         </FlexContainer>
       </Section>
       {/*  END ABOUT SECTION*/}
@@ -336,7 +356,7 @@ const HomePage = () => {
               </Tab>
             ))}
             <FlexContainer justifyContent="flex-end">
-              <MoreLink href="https://behance.net" target="_blank">
+              <MoreLink href="https://behance.net/baiburin_1" target="_blank">
                 More projects ->
               </MoreLink>
             </FlexContainer>
@@ -364,14 +384,16 @@ const HomePage = () => {
             <p>Logo and branding</p>
           </ServicesItem>
         </div>
-        <FlexContainer justifyContent="space-between" margin="25px 0 0">
-          <ServicesType>brifing</ServicesType>
-          <ServicesType>UX/Analytics</ServicesType>
-          <ServicesType>Design Concept</ServicesType>
-          <ServicesType>Design all pages</ServicesType>
-          <ServicesType>responsiveness</ServicesType>
-          <ServicesType>development</ServicesType>
-        </FlexContainer>
+        <div>
+          <FlexContainer justifyContent="space-between" margin="25px 0 0">
+            <ServicesType>brifing</ServicesType>
+            <ServicesType>UX/Analytics</ServicesType>
+            <ServicesType>Design Concept</ServicesType>
+            <ServicesType>Design all pages</ServicesType>
+            <ServicesType>responsiveness</ServicesType>
+            <ServicesType>development</ServicesType>
+          </FlexContainer>
+        </div>
       </Section>
     </Layout>
   );
