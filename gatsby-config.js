@@ -67,5 +67,16 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-fonts-v2`,
+      options: {
+        fonts: [
+          {
+            family: "Roboto Condensed",
+            weights: ["400"],
+          },
+        ],
+      },
+    },
   ],
 };
