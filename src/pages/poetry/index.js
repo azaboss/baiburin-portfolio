@@ -12,7 +12,7 @@ const PoetryTitle = styled.div`
   color: #181818;
   letter-spacing: 0.205em;
   text-transform: uppercase;
-  -webkit-text-stroke: 1px #c4c4c4;
+  -webkit-text-stroke: 1px #c4c4c470;
   width: 100%;
   //position: absolute;
   z-index: 1;
@@ -26,11 +26,11 @@ const PoetryText = styled.div`
   z-index: 10;
   padding: 20px;
   text-align: center;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Gilroy Light", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 16px;
+  line-height: 20px;
   letter-spacing: 0.13em;
   white-space: pre-wrap;
   color: #efefef;
@@ -102,22 +102,24 @@ const Wrapper = styled.div`
     & span {
       justify-content: flex-start;
     }
-    & .title {
-      &.right {
-        left: 0;
-        transform: translateX(550px);
-      }
+  }
+  & .title {
+    &.right {
+      left: 0;
+      transform: translateX(550px);
+    }
 
-      &.left {
-        right: 0;
-        transform: translateX(-102%);
+    &.left {
+      left: 0;
+      transform: translateX(-50%);
+      & span {
+        display: none;
       }
     }
   }
 
   &:nth-child(even) {
     margin-right: 50px;
-
     & .text {
       justify-content: flex-end;
     }
@@ -126,18 +128,19 @@ const Wrapper = styled.div`
       &.right {
         right: 0;
         transform: translateX(101%);
-
-        & span {
-          display: none;
-        }
+        //
+        //& span {
+        //  display: none;
+        //}
       }
 
       &.left {
         left: 0;
         transform: translateX(-40%);
+
         & span {
           justify-content: flex-end;
-          margin-right: 30px;
+          margin-right: 10%;
         }
       }
     }
@@ -150,22 +153,35 @@ const List = styled.div`
 `;
 
 const PoetryTest = ({ title = "", text = "" }) => {
+  const doAppend = () => {
+    if (title.length <= 5) {
+      return title;
+    }
+  };
+
   return (
     <Wrapper>
       <div className="title left">
         <div>
-          <PoetryTitle>{title} </PoetryTitle>
-          <span>01.01.2020</span>
-        </div>
-      </div>
-      <div className="title right">
-        <div>
-          <PoetryTitle>{title}</PoetryTitle>
+          <PoetryTitle>
+            {title}
+            {doAppend()}
+          </PoetryTitle>
           <span>01.01.2020</span>
         </div>
       </div>
       <div className="text">
+        <h2>{title}</h2>
         <PoetryText>{text}</PoetryText>
+      </div>
+      <div className="title right">
+        <div>
+          <PoetryTitle>
+            {title}
+            {doAppend()}
+          </PoetryTitle>
+          <span>01.01.2020</span>
+        </div>
       </div>
     </Wrapper>
   );
@@ -176,10 +192,10 @@ const Poetry = () => {
     <Layout>
       <div>poetry page</div>
       <List>
-        <PoetryTest title="какой то тайтл" text={text} />
-        <PoetryTest title="verse title" text={text} />
-        <PoetryTest title="verse title" text={text} />
-        <PoetryTest title="verse title" text={text} />
+        <PoetryTest title="дом" text={text} />
+        <PoetryTest title="шалав" text={text} />
+        <PoetryTest title="из2 слов" text={text} />
+        <PoetryTest title="ахуенный тайтл" text={text} />
       </List>
     </Layout>
   );

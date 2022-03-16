@@ -73,7 +73,7 @@ module.exports = {
         fonts: [
           {
             family: "Roboto Condensed",
-            weights: ["400"],
+            weights: ["400", "600"],
           },
         ],
       },
