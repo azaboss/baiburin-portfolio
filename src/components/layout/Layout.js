@@ -9,6 +9,7 @@ import Footer from "../footer";
 const Wrapper = styled.div`
   color: ${colors.primaryText};
   background-color: #181818;
+  overflow-x: hidden;
 `;
 
 const Container = styled.div`
