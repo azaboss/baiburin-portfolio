@@ -25,22 +25,131 @@ export const HeroText = styled.span`
   text-transform: uppercase;
   letter-spacing: 0.02em;
   margin: 0;
-  transform: rotate(-90deg);
   color: ${colors.primaryText};
 `;
 
 export const Quote = styled.p`
+  margin: 0 0 10px;
   font-family: "Gilroy", sans-serif;
   font-size: 24px;
   font-weight: 300;
   color: ${colors.primaryText};
   letter-spacing: 0.04em;
   text-align: ${(props) => props.align || "left"};
+
+  @media (max-width: 575px) {
+    font-size: 16px;
+  }
 `;
 
 export const RelativeBlock = styled.div`
   position: relative;
   padding: ${(props) => props.padding};
+
+  & .links {
+    @media (max-width: 650px) {
+      display: none;
+    }
+  }
+
+  & .about {
+    display: flex;
+
+    & .specialize-block {
+      margin-left: 108px;
+      position: relative;
+      z-index: 3;
+
+      & .bg-text {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        & p {
+          font-family: "Gilroy Light", sans-serif;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 48px;
+          line-height: 59px;
+          margin: 24px 0 0;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: #272829;
+
+          @media (max-width: 455px) {
+            font-size: 32px;
+            line-height: 39px;
+            margin: 44px 0 0;
+          }
+        }
+      }
+
+      & div {
+        margin-bottom: 15px;
+      }
+
+      @media (max-width: 922px) {
+        margin-left: 0;
+      }
+    }
+
+    & .about-text {
+      font-family: "Gilroy Light", sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 36px;
+      line-height: 43px;
+      text-align: center;
+      letter-spacing: 0.08em;
+      color: ${colors.primaryText};
+      position: absolute;
+      bottom: 0;
+      left: 122px;
+      max-width: 850px;
+
+      @media (max-width: 922px) {
+        position: static;
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 30px;
+      }
+    }
+
+    & .about-img {
+      max-width: 426px;
+      @media (max-width: 922px) {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 925px) {
+      display: block;
+    }
+  }
+`;
+
+export const QuoteBlock = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+
+  & .quote {
+    width: 479px;
+    margin-right: 97px;
+
+    @media (max-width: 650px) {
+      width: 100%;
+      padding-left: 60px;
+      margin-right: 0;
+    }
+
+    @media (max-width: 380px) {
+      padding-left: 0;
+    }
+  }
+
+  @media (max-width: 650px) {
+    justify-content: center;
+  }
 `;
 
 export const BlockTitle = styled.h3`

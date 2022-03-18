@@ -12,7 +12,7 @@ const ListITem = styled.li`
   font-size: 14px;
   line-height: 16px;
   color: ${colors.primaryText};
-  margin-bottom: 17px;
+  margin-bottom: 15px;
 
   &:last-child {
     margin-bottom: 0;

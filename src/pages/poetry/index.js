@@ -1,7 +1,6 @@
 import React from "react";
 import Layout from "../../components/layout/Layout";
 import styled from "@emotion/styled";
-import { css } from "@emotion/css";
 
 const PoetryTitle = styled.div`
   font-family: "Roboto Condensed", sans-serif;
@@ -14,7 +13,6 @@ const PoetryTitle = styled.div`
   text-transform: uppercase;
   -webkit-text-stroke: 1px #c4c4c470;
   width: 100%;
-  //position: absolute;
   z-index: 1;
   white-space: nowrap;
 `;
@@ -76,6 +74,20 @@ const Wrapper = styled.div`
   position: relative;
   z-index: 5;
 
+  & .text-block {
+    & .title-block {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    & h2 {
+      font-family: "Gilroy Light", sans-serif;
+      font-size: 16px;
+      text-transform: uppercase;
+      margin: 0;
+    }
+  }
+
   & span {
     font-family: "Roboto Condensed", sans-serif;
     color: #181818;
@@ -128,10 +140,6 @@ const Wrapper = styled.div`
       &.right {
         right: 0;
         transform: translateX(101%);
-        //
-        //& span {
-        //  display: none;
-        //}
       }
 
       &.left {
@@ -150,6 +158,7 @@ const Wrapper = styled.div`
 const List = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 100px;
 `;
 
 const PoetryTest = ({ title = "", text = "" }) => {
@@ -171,8 +180,13 @@ const PoetryTest = ({ title = "", text = "" }) => {
         </div>
       </div>
       <div className="text">
-        <h2>{title}</h2>
-        <PoetryText>{text}</PoetryText>
+        <div className="text-block">
+          <div className="title-block">
+            <h2>{title}</h2>
+            <h2>01.01.2020</h2>
+          </div>
+          <PoetryText>{text}</PoetryText>
+        </div>
       </div>
       <div className="title right">
         <div>
@@ -190,7 +204,6 @@ const PoetryTest = ({ title = "", text = "" }) => {
 const Poetry = () => {
   return (
     <Layout>
-      <div>poetry page</div>
       <List>
         <PoetryTest title="дом" text={text} />
         <PoetryTest title="шалав" text={text} />

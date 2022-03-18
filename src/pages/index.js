@@ -18,6 +18,7 @@ import {
   HeroText,
   MoreLink,
   Quote,
+  QuoteBlock,
   RelativeBlock,
   Section,
   SectionText,
@@ -68,60 +69,61 @@ const HomePage = () => {
         <Title title="UI/UX DESIGNER" withIcon={false} />
         <FlexContainer justifyContent="space-between" margin="65px 0 0">
           <RelativeBlock>
-            <p
-              className={css`
-                position: absolute;
-                top: 0;
-                left: -7px;
-                margin: 0;
-              `}
-            >
-              <HeroText>links</HeroText>
-            </p>
-
-            <FlexContainer direction="column" padding={"30px 0 0 "}>
-              <span
+            <div className="links">
+              <p
                 className={css`
-                  width: 1px;
-                  height: 97px;
-                  background-color: ${colors.primaryText};
-                  margin: 20px 13px;
+                  margin: 0 5px;
+                  writing-mode: vertical-lr;
+                  text-orientation: inherit;
+                  transform: rotate(180deg);
                 `}
-              />
-              <Instagram />
-              <Vk />
-              <Twitter />
-            </FlexContainer>
+              >
+                <HeroText>links</HeroText>
+              </p>
+
+              <FlexContainer direction="column">
+                <span
+                  className={css`
+                    width: 1px;
+                    height: 97px;
+                    background-color: ${colors.primaryText};
+                    margin: 20px 13px;
+                  `}
+                />
+                <Instagram />
+                <Vk />
+                <Twitter />
+              </FlexContainer>
+            </div>
           </RelativeBlock>
 
-          <FlexContainer>
-            <div
-              className={css`
-                width: 479px;
-                margin-right: 97px;
-              `}
-            >
+          <QuoteBlock>
+            <div className="quote">
               <Quote>
                 “Design is not just what it looks like and feels like. Design is
                 how it works.”
               </Quote>
               <Quote align="right">Steve Jobs</Quote>
             </div>
-            <RelativeBlock padding={"65px 0 0 "}>
+            <FlexContainer
+              alignItems="center"
+              direction="column"
+              padding={"65px 0 0 "}
+            >
               <p
                 className={css`
-                  position: absolute;
-                  top: 0;
-                  left: -28px;
                   margin: 0;
-                  width: 100px;
+                  writing-mode: vertical-lr;
+                  text-orientation: inherit;
+                  margin-bottom: 10px;
+                  transform: rotate(180deg);
                 `}
               >
                 <HeroText>Let’s go</HeroText>
               </p>
               <LongArrow />
-            </RelativeBlock>
-          </FlexContainer>
+            </FlexContainer>
+          </QuoteBlock>
         </FlexContainer>
       </Section>
       {/*  END HERO*/}
@@ -129,22 +131,25 @@ const HomePage = () => {
       {/*PHOTO SECTION*/}
       <Section>
         <RelativeBlock>
-          <FlexContainer>
+          <div className="about">
             <StaticImage
               src="../images/profile.jpg"
               alt="Azamat Baiburin"
               placeholder="blurred"
               layout="constrained"
-              className={css`
-                max-width: 426px;
-              `}
+              className="about-img"
             />
-            <FlexContainer margin="0 0 0 174px">
-              <div
-                className={css`
-                  margin-right: 60px;
-                `}
-              >
+            <p className="about-text">
+              Hi, I am Azamat, UX/UI Designer from Kazakhstan. Adept of
+              minimalism, accuracy, cleanliness and lightness.
+            </p>
+            <div className="specialize-block">
+              <div className="bg-text">
+                <p>UX/UI</p>
+                <p>DEVELOPMENT</p>
+                <p>Analytics</p>
+              </div>
+              <div>
                 <span
                   className={css`
                     font-family: "Gilroy Light", sans-serif;
@@ -153,248 +158,230 @@ const HomePage = () => {
                 >
                   I specialize
                 </span>
-                <BlockTitle>UX|UI</BlockTitle>
               </div>
               <List
                 list={[
-                  "Huge SAAS services, CRM systems, Dashboards etc",
+                  "Huge SAAS services",
+                  "CRM systems",
+                  " Dashboards",
                   "E-commerce",
                   "Websites",
                   "Mobile applications",
                   "Logo and branding",
                 ]}
               />
-            </FlexContainer>
-          </FlexContainer>
-          <p
-            className={css`
-              font-family: "Gilroy Light", sans-serif;
-              font-style: normal;
-              font-weight: 300;
-              font-size: 36px;
-              line-height: 43px;
-              text-align: center;
-              letter-spacing: 0.08em;
-              color: ${colors.primaryText};
-              position: absolute;
-              bottom: 0;
-              left: 122px;
-              max-width: 850px;
-            `}
-          >
-            Hi, I am Azamat, UX/UI Designer from Kazakhstan. Adept of
-            minimalism, accuracy, cleanliness and lightness.
-          </p>
-        </RelativeBlock>
-      </Section>
-      {/*  END PHOTO*/}
-
-      {/*  ABOUT SECTION*/}
-      <Section>
-        <Title title="ABOUT ME" />
-        <FlexContainer justifyContent="flex-end">
-          <SectionText>
-            UI/UX дизайнер с опытом работы разработчиком и IT аналитиком.
-            Небольшие знания Java, JS, CSS, HTML и прочего дают мне возможность
-            проектировать дизайн, наиболее продуктивный и жизнеспособный как для
-            пользователей так и для разработчиков. Хорошо рисую от руки и имею
-            аналитический склад ума. Считаю, что дизайн это не красивая
-            картинка, а решение задачи клиента в первую очередь. Хороший дизайн
-            должен быть простым, понятным и легким. Адепт минимализма во всем.
-            Бакалавр ВТиПО Казахстансокго университета и Postgraduate
-            certificate по Advanced Computing with Management Лондонсокго
-            университета (топ 30 мира) King's College London. Владею английским
-            языком на уровне IELTS 6.5+ (сертификат получал еще до обучения в
-            Лондоне, так что возможно уже выше). Имею сертификат из Michigan
-            University по Qualitative Interviewing. Люблю как творчество, так и
-            технологии, логику, аналитику. Поэтому и решил развиваться именно в
-            UX/UI дизайне. Сильно мотивирован развиваться и мечтаю в будущем
-            разрабатывать дизайн, который повлияет на весь Мир.
-          </SectionText>
-        </FlexContainer>
-        <p
-          className={css`
-            font-family: "Gilroy Light", sans-serif;
-
-            font-size: 24px;
-            line-height: 29px;
-          `}
-        >
-          Дизайн – это не только о создании продуктов, но и о создании будущего,
-          в котором вы хотите жить.
-        </p>
-        <FlexContainer
-          justifyContent="space-between"
-          margin={"100px 0 0 "}
-          className={css`
-            gap: 74px;
-          `}
-        >
-          <WorkBlock>
-            <h3>I WORK</h3>
-            <p>
-              I'm a 24 y/o UX/UI Designer based in Kazakhstan. Adept of
-              minimalism, accuracy, cleanliness and lightness.
-            </p>
-          </WorkBlock>
-          <WorkBlock>
-            <h3>I WORK</h3>
-            <p>
-              I'm a 24 y/o UX/UI Designer based in Kazakhstan. Adept of
-              minimalism, accuracy, cleanliness and lightness.
-            </p>
-          </WorkBlock>
-          <WorkBlock>
-            <h3>I WORK</h3>
-            <p>
-              I'm a 24 y/o UX/UI Designer based in Kazakhstan. Adept of
-              minimalism, accuracy, cleanliness and lightness.
-            </p>
-          </WorkBlock>
-        </FlexContainer>
-        <FlexContainer justifyContent="flex-end">
-          <Link
-            to="/about"
-            className={css`
-              font-family: "Gilroy Light", sans-serif;
-              font-size: 18px;
-              line-height: 22px;
-              color: #6191ef;
-              text-decoration: none;
-              cursor: pointer;
-              margin-top: 50px;
-            `}
-          >
-            More about me ->
-          </Link>
-        </FlexContainer>
-      </Section>
-      {/*  END ABOUT SECTION*/}
-
-      {/*  PROJECTS*/}
-      <Section>
-        <Title title="SOME OF my" withIcon={false} />
-        <Title title="projects" margin="0 0 0 100px" />
-        <FlexContainer justifyContent="flex-end">
-          <SectionText>
-            Я специализируюсь на разработке сложных интерфейсов мобильных и веб
-            приложений, дэшбордов, систем управления и п.р. Но при желании
-            справлюсь и с сайтами, лендингами а иногда даже логотипами и
-            визуалами.
-          </SectionText>
-        </FlexContainer>
-        <FlexContainer style={{ justifyContent: "space-between" }}>
-          <div
-            className={css`
-              width: 550px;
-              height: 600px;
-              position: relative;
-              overflow: hidden;
-
-              & .mask {
-                position: absolute;
-                top: 0;
-                left: 0;
-                background-color: rgba(0, 0, 0, 0.2);
-                width: 100%;
-                height: 100%;
-                opacity: 0;
-                z-index: 10;
-                pointer-events: none;
-                transition: all 0.2s linear;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                & a {
-                  color: #fff;
-                }
-              }
-
-              &:hover {
-                & .mask {
-                  opacity: 1;
-                  pointer-events: all;
-                }
-              }
-            `}
-          >
-            <GatsbyImage
-              alt={image.title}
-              image={image.image.gatsbyImageData}
-              className={css`
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-              `}
-            />
-
-            <div className="mask">
-              <Link to={`/${slug}`}>visit project</Link>
             </div>
           </div>
+        </RelativeBlock>
+      </Section>
+      {/*/!*  END PHOTO*!/*/}
 
-          <div
-            className={css`
-              width: 600px;
-            `}
-          >
-            {tabs.map((tab, i) => (
-              <Tab
-                key={tab.id}
-                onClick={() => handleClick(i)}
-                className={css`
-                  background: ${i === activeTab
-                    ? "rgba(255, 255, 255, 0.08)"
-                    : "none"};
-                `}
-              >
-                <div className={i === activeTab ? "active" : ""}>
-                  <ArrowRight />
-                  {tab.title}
-                </div>
-              </Tab>
-            ))}
-            <FlexContainer justifyContent="flex-end">
-              <MoreLink href="https://behance.net/baiburin_1" target="_blank">
-                More projects ->
-              </MoreLink>
-            </FlexContainer>
-          </div>
-        </FlexContainer>
-      </Section>
-      {/*  END PROJECTS*/}
-      <Section>
-        <Title title="SERVICES" margin="0 0 0 100px" />
-        <div>
-          <ServicesItem>
-            <span>01</span>
-            <p>websites</p>
-          </ServicesItem>
-          <ServicesItem>
-            <span>02</span>
-            <p>E-commerce</p>
-          </ServicesItem>
-          <ServicesItem>
-            <span>03</span>
-            <p>Mobile apps</p>
-          </ServicesItem>
-          <ServicesItem>
-            <span>04</span>
-            <p>Logo and branding</p>
-          </ServicesItem>
-        </div>
-        <div>
-          <FlexContainer justifyContent="space-between" margin="25px 0 0">
-            <ServicesType>brifing</ServicesType>
-            <ServicesType>UX/Analytics</ServicesType>
-            <ServicesType>Design Concept</ServicesType>
-            <ServicesType>Design all pages</ServicesType>
-            <ServicesType>responsiveness</ServicesType>
-            <ServicesType>development</ServicesType>
-          </FlexContainer>
-        </div>
-      </Section>
+      {/*/!*  ABOUT SECTION*!/*/}
+      {/*<Section>*/}
+      {/*  <Title title="ABOUT ME" />*/}
+      {/*  <FlexContainer justifyContent="flex-end">*/}
+      {/*    <SectionText>*/}
+      {/*      UI/UX дизайнер с опытом работы разработчиком и IT аналитиком.*/}
+      {/*      Небольшие знания Java, JS, CSS, HTML и прочего дают мне возможность*/}
+      {/*      проектировать дизайн, наиболее продуктивный и жизнеспособный как для*/}
+      {/*      пользователей так и для разработчиков. Хорошо рисую от руки и имею*/}
+      {/*      аналитический склад ума. Считаю, что дизайн это не красивая*/}
+      {/*      картинка, а решение задачи клиента в первую очередь. Хороший дизайн*/}
+      {/*      должен быть простым, понятным и легким. Адепт минимализма во всем.*/}
+      {/*      Бакалавр ВТиПО Казахстансокго университета и Postgraduate*/}
+      {/*      certificate по Advanced Computing with Management Лондонсокго*/}
+      {/*      университета (топ 30 мира) King's College London. Владею английским*/}
+      {/*      языком на уровне IELTS 6.5+ (сертификат получал еще до обучения в*/}
+      {/*      Лондоне, так что возможно уже выше). Имею сертификат из Michigan*/}
+      {/*      University по Qualitative Interviewing. Люблю как творчество, так и*/}
+      {/*      технологии, логику, аналитику. Поэтому и решил развиваться именно в*/}
+      {/*      UX/UI дизайне. Сильно мотивирован развиваться и мечтаю в будущем*/}
+      {/*      разрабатывать дизайн, который повлияет на весь Мир.*/}
+      {/*    </SectionText>*/}
+      {/*  </FlexContainer>*/}
+      {/*  <p*/}
+      {/*    className={css`*/}
+      {/*      font-family: "Gilroy Light", sans-serif;*/}
+
+      {/*      font-size: 24px;*/}
+      {/*      line-height: 29px;*/}
+      {/*    `}*/}
+      {/*  >*/}
+      {/*    Дизайн – это не только о создании продуктов, но и о создании будущего,*/}
+      {/*    в котором вы хотите жить.*/}
+      {/*  </p>*/}
+      {/*  <FlexContainer*/}
+      {/*    justifyContent="space-between"*/}
+      {/*    margin={"100px 0 0 "}*/}
+      {/*    className={css`*/}
+      {/*      gap: 74px;*/}
+      {/*    `}*/}
+      {/*  >*/}
+      {/*    <WorkBlock>*/}
+      {/*      <h3>I WORK</h3>*/}
+      {/*      <p>*/}
+      {/*        I'm a 24 y/o UX/UI Designer based in Kazakhstan. Adept of*/}
+      {/*        minimalism, accuracy, cleanliness and lightness.*/}
+      {/*      </p>*/}
+      {/*    </WorkBlock>*/}
+      {/*    <WorkBlock>*/}
+      {/*      <h3>I WORK</h3>*/}
+      {/*      <p>*/}
+      {/*        I'm a 24 y/o UX/UI Designer based in Kazakhstan. Adept of*/}
+      {/*        minimalism, accuracy, cleanliness and lightness.*/}
+      {/*      </p>*/}
+      {/*    </WorkBlock>*/}
+      {/*    <WorkBlock>*/}
+      {/*      <h3>I WORK</h3>*/}
+      {/*      <p>*/}
+      {/*        I'm a 24 y/o UX/UI Designer based in Kazakhstan. Adept of*/}
+      {/*        minimalism, accuracy, cleanliness and lightness.*/}
+      {/*      </p>*/}
+      {/*    </WorkBlock>*/}
+      {/*  </FlexContainer>*/}
+      {/*  <FlexContainer justifyContent="flex-end">*/}
+      {/*    <Link*/}
+      {/*      to="/about"*/}
+      {/*      className={css`*/}
+      {/*        font-family: "Gilroy Light", sans-serif;*/}
+      {/*        font-size: 18px;*/}
+      {/*        line-height: 22px;*/}
+      {/*        color: #6191ef;*/}
+      {/*        text-decoration: none;*/}
+      {/*        cursor: pointer;*/}
+      {/*        margin-top: 50px;*/}
+      {/*      `}*/}
+      {/*    >*/}
+      {/*      More about me ->*/}
+      {/*    </Link>*/}
+      {/*  </FlexContainer>*/}
+      {/*</Section>*/}
+      {/*/!*  END ABOUT SECTION*!/*/}
+
+      {/*/!*  PROJECTS*!/*/}
+      {/*<Section>*/}
+      {/*  <Title title="SOME OF my" withIcon={false} />*/}
+      {/*  <Title title="projects" margin="0 0 0 100px" />*/}
+      {/*  <FlexContainer justifyContent="flex-end">*/}
+      {/*    <SectionText>*/}
+      {/*      Я специализируюсь на разработке сложных интерфейсов мобильных и веб*/}
+      {/*      приложений, дэшбордов, систем управления и п.р. Но при желании*/}
+      {/*      справлюсь и с сайтами, лендингами а иногда даже логотипами и*/}
+      {/*      визуалами.*/}
+      {/*    </SectionText>*/}
+      {/*  </FlexContainer>*/}
+      {/*  <FlexContainer style={{ justifyContent: "space-between" }}>*/}
+      {/*    <div*/}
+      {/*      className={css`*/}
+      {/*        width: 550px;*/}
+      {/*        height: 600px;*/}
+      {/*        position: relative;*/}
+      {/*        overflow: hidden;*/}
+
+      {/*        & .mask {*/}
+      {/*          position: absolute;*/}
+      {/*          top: 0;*/}
+      {/*          left: 0;*/}
+      {/*          background-color: rgba(0, 0, 0, 0.2);*/}
+      {/*          width: 100%;*/}
+      {/*          height: 100%;*/}
+      {/*          opacity: 0;*/}
+      {/*          z-index: 10;*/}
+      {/*          pointer-events: none;*/}
+      {/*          transition: all 0.2s linear;*/}
+      {/*          display: flex;*/}
+      {/*          justify-content: center;*/}
+      {/*          align-items: center;*/}
+
+      {/*          & a {*/}
+      {/*            color: #fff;*/}
+      {/*          }*/}
+      {/*        }*/}
+
+      {/*        &:hover {*/}
+      {/*          & .mask {*/}
+      {/*            opacity: 1;*/}
+      {/*            pointer-events: all;*/}
+      {/*          }*/}
+      {/*        }*/}
+      {/*      `}*/}
+      {/*    >*/}
+      {/*      <GatsbyImage*/}
+      {/*        alt={image.title}*/}
+      {/*        image={image.image.gatsbyImageData}*/}
+      {/*        className={css`*/}
+      {/*          width: 100%;*/}
+      {/*          height: 100%;*/}
+      {/*          object-fit: cover;*/}
+      {/*        `}*/}
+      {/*      />*/}
+
+      {/*      <div className="mask">*/}
+      {/*        <Link to={`/${slug}`}>visit project</Link>*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
+
+      {/*    <div*/}
+      {/*      className={css`*/}
+      {/*        width: 600px;*/}
+      {/*      `}*/}
+      {/*    >*/}
+      {/*      {tabs.map((tab, i) => (*/}
+      {/*        <Tab*/}
+      {/*          key={tab.id}*/}
+      {/*          onClick={() => handleClick(i)}*/}
+      {/*          className={css`*/}
+      {/*            background: ${i === activeTab*/}
+      {/*              ? "rgba(255, 255, 255, 0.08)"*/}
+      {/*              : "none"};*/}
+      {/*          `}*/}
+      {/*        >*/}
+      {/*          <div className={i === activeTab ? "active" : ""}>*/}
+      {/*            <ArrowRight />*/}
+      {/*            {tab.title}*/}
+      {/*          </div>*/}
+      {/*        </Tab>*/}
+      {/*      ))}*/}
+      {/*      <FlexContainer justifyContent="flex-end">*/}
+      {/*        <MoreLink href="https://behance.net/baiburin_1" target="_blank">*/}
+      {/*          More projects ->*/}
+      {/*        </MoreLink>*/}
+      {/*      </FlexContainer>*/}
+      {/*    </div>*/}
+      {/*  </FlexContainer>*/}
+      {/*</Section>*/}
+      {/*/!*  END PROJECTS*!/*/}
+      {/*<Section>*/}
+      {/*  <Title title="SERVICES" margin="0 0 0 100px" />*/}
+      {/*  <div>*/}
+      {/*    <ServicesItem>*/}
+      {/*      <span>01</span>*/}
+      {/*      <p>websites</p>*/}
+      {/*    </ServicesItem>*/}
+      {/*    <ServicesItem>*/}
+      {/*      <span>02</span>*/}
+      {/*      <p>E-commerce</p>*/}
+      {/*    </ServicesItem>*/}
+      {/*    <ServicesItem>*/}
+      {/*      <span>03</span>*/}
+      {/*      <p>Mobile apps</p>*/}
+      {/*    </ServicesItem>*/}
+      {/*    <ServicesItem>*/}
+      {/*      <span>04</span>*/}
+      {/*      <p>Logo and branding</p>*/}
+      {/*    </ServicesItem>*/}
+      {/*  </div>*/}
+      {/*  <div>*/}
+      {/*    <FlexContainer justifyContent="space-between" margin="25px 0 0">*/}
+      {/*      <ServicesType>brifing</ServicesType>*/}
+      {/*      <ServicesType>UX/Analytics</ServicesType>*/}
+      {/*      <ServicesType>Design Concept</ServicesType>*/}
+      {/*      <ServicesType>Design all pages</ServicesType>*/}
+      {/*      <ServicesType>responsiveness</ServicesType>*/}
+      {/*      <ServicesType>development</ServicesType>*/}
+      {/*    </FlexContainer>*/}
+      {/*  </div>*/}
+      {/*</Section>*/}
     </Layout>
   );
 };
