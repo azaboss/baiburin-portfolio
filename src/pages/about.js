@@ -26,6 +26,7 @@ const AboutBlock = styled.div`
     font-size: 48px;
     line-height: 58px;
     margin: 0;
+    min-width: 115px;
   }
 `;
 
@@ -37,7 +38,7 @@ const About = () => {
       </Section>
       <Section>
         <AboutBlock>
-          <FlexContainer justifyContent="space-between">
+          <FlexContainer justifyContent="space-between" flexWrap="wrap">
             <h2>1995</h2>
             <SectionText>
               Родился в прошлом веке, в холодной стране, в самом сердце Евразии.
@@ -46,7 +47,7 @@ const About = () => {
           </FlexContainer>
         </AboutBlock>
         <AboutBlock>
-          <FlexContainer justifyContent="space-between">
+          <FlexContainer justifyContent="space-between" flexWrap="wrap">
             <h2>2013</h2>
             <SectionText>
               С детства проявляя интерес к точным наукам и технологиям, закончил
@@ -56,7 +57,7 @@ const About = () => {
           </FlexContainer>
         </AboutBlock>
         <AboutBlock>
-          <FlexContainer justifyContent="space-between">
+          <FlexContainer justifyContent="space-between" flexWrap="wrap">
             <h2>2013-2017</h2>
             <SectionText>
               Увлекался веб, мобильной и декстопной разработкой, пробовал для
@@ -79,9 +80,8 @@ const About = () => {
         <FlexContainer
           justifyContent="space-between"
           margin={"100px 0 0 "}
-          className={css`
-            gap: 74px;
-          `}
+          flexWrap="wrap"
+          className="about"
         >
           <WorkBlock>
             <h3>Я работаю</h3>

@@ -19,6 +19,13 @@ export const FlexContainer = styled.div`
       justify-content: flex-start;
     }
   }
+
+  &.about {
+    gap: 50px;
+    @media (max-width: 575px) {
+      gap: 0;
+    }
+  }
 `;
 export const Section = styled.section`
   margin-top: 100px;
@@ -259,6 +266,11 @@ export const BlockTitle = styled.h3`
 export const WorkBlock = styled.div`
   font-family: "Gilroy Light", sans-serif;
   width: 350px;
+
+  @media (max-width: 1180px) {
+    width: 45%;
+  }
+
   h3 {
     font-weight: 600;
     font-size: 24px;

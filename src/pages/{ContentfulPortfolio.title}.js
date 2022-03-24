@@ -20,7 +20,7 @@ const ProjectTitle = styled.h2`
   }
 
   @media (max-width: 575px) {
-    font-size: 40px;
+    font-size: 35px;
   }
 `;
 
@@ -60,6 +60,9 @@ const Project = styled.div`
 
   & .project-descr {
     margin: 100px 0;
+    @media (max-width: 575px) {
+      margin: 50px 0;
+    }
     & p {
       font-family: "Gilroy Light", sans-serif;
       margin: 0;
