@@ -9,6 +9,7 @@ const PoetryTitle = styled.div`
   font-size: 144px;
   line-height: 169px;
   color: #181818;
+  background-color: #181818;
   letter-spacing: 0.205em;
   text-transform: uppercase;
   -webkit-text-stroke: 1px #c4c4c470;
@@ -32,6 +33,10 @@ const PoetryText = styled.div`
   letter-spacing: 0.13em;
   white-space: pre-wrap;
   color: #efefef;
+
+  @media (max-width: 575px) {
+    width: auto;
+  }
 `;
 
 const text =
@@ -74,7 +79,14 @@ const Wrapper = styled.div`
   position: relative;
   z-index: 5;
 
+  @media (max-width: 575px) {
+    width: 100%;
+  }
+
   & .text-block {
+    @media (max-width: 575px) {
+      width: 100%;
+    }
     & .title-block {
       display: flex;
       justify-content: space-between;
@@ -91,6 +103,7 @@ const Wrapper = styled.div`
   & span {
     font-family: "Roboto Condensed", sans-serif;
     color: #181818;
+    background-color: #181818;
     font-weight: 700;
     font-size: 48px;
     line-height: 56px;
@@ -132,6 +145,9 @@ const Wrapper = styled.div`
 
   &:nth-child(even) {
     margin-right: 50px;
+    @media (max-width: 768px) {
+      margin-right: 0;
+    }
     & .text {
       justify-content: flex-end;
     }
@@ -159,6 +175,10 @@ const List = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 100px;
+
+  @media (max-width: 768px) {
+    align-items: center;
+  }
 `;
 
 const PoetryTest = ({ title = "", text = "" }) => {
