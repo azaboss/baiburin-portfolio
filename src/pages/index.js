@@ -31,6 +31,7 @@ import {
 import { graphql, useStaticQuery } from "gatsby";
 import Link from "gatsby-link";
 import { gsap } from "gsap";
+import Seo from "../Seo";
 // markup
 const tabsQuery = graphql`
   {
@@ -64,6 +65,7 @@ const HomePage = () => {
 
   return (
     <Layout>
+      <Seo title="Home" />
       {/*HERO SECTION*/}
       <Section ref={heroRef} style={{ opacity: 0 }}>
         <Title title="UI/UX DESIGNER" withIcon={false} />

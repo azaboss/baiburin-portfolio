@@ -7,6 +7,7 @@ import Arrow from "../images/svg/arrow.inline.svg";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { css } from "@emotion/css";
+import Seo from "../Seo";
 
 const ProjectTitle = styled.h2`
   font-family: "Gilroy Light", sans-serif;
@@ -104,6 +105,7 @@ const ProjectTemplate = ({ data }) => {
   const pathImage = getImage(image.gatsbyImageData);
   return (
     <Layout>
+      <Seo title={title} description={description} />
       <Project>
         <ProjectTitle>{title}</ProjectTitle>
         <FlexContainer className="task-block" justifyContent="flex-end">
