@@ -29,6 +29,10 @@ const NavLink = ({ path, pathname }) => {
         &:last-child {
           margin-right: 0;
         }
+
+        @media (max-width: 575px) {
+          margin-right: 20px;
+        }
       `}
     >
       {pathname}

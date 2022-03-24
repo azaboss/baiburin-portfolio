@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useEffect, useRef, useState } from "react";
+import Collapse from "@kunukn/react-collapse";
 import Layout from "../components/layout/Layout";
 import Title from "../components/Title";
 import Instagram from "../images/svg/inst.inline.svg";
@@ -51,7 +52,6 @@ const HomePage = () => {
   const [activeTab, setActiveTab] = useState(0);
   const handleClick = (index) => {
     setActiveTab(index);
-    console.log(index, activeTab);
   };
 
   const image = tabs[activeTab];
@@ -176,212 +176,221 @@ const HomePage = () => {
       </Section>
       {/*/!*  END PHOTO*!/*/}
 
-      {/*/!*  ABOUT SECTION*!/*/}
-      {/*<Section>*/}
-      {/*  <Title title="ABOUT ME" />*/}
-      {/*  <FlexContainer justifyContent="flex-end">*/}
-      {/*    <SectionText>*/}
-      {/*      UI/UX дизайнер с опытом работы разработчиком и IT аналитиком.*/}
-      {/*      Небольшие знания Java, JS, CSS, HTML и прочего дают мне возможность*/}
-      {/*      проектировать дизайн, наиболее продуктивный и жизнеспособный как для*/}
-      {/*      пользователей так и для разработчиков. Хорошо рисую от руки и имею*/}
-      {/*      аналитический склад ума. Считаю, что дизайн это не красивая*/}
-      {/*      картинка, а решение задачи клиента в первую очередь. Хороший дизайн*/}
-      {/*      должен быть простым, понятным и легким. Адепт минимализма во всем.*/}
-      {/*      Бакалавр ВТиПО Казахстансокго университета и Postgraduate*/}
-      {/*      certificate по Advanced Computing with Management Лондонсокго*/}
-      {/*      университета (топ 30 мира) King's College London. Владею английским*/}
-      {/*      языком на уровне IELTS 6.5+ (сертификат получал еще до обучения в*/}
-      {/*      Лондоне, так что возможно уже выше). Имею сертификат из Michigan*/}
-      {/*      University по Qualitative Interviewing. Люблю как творчество, так и*/}
-      {/*      технологии, логику, аналитику. Поэтому и решил развиваться именно в*/}
-      {/*      UX/UI дизайне. Сильно мотивирован развиваться и мечтаю в будущем*/}
-      {/*      разрабатывать дизайн, который повлияет на весь Мир.*/}
-      {/*    </SectionText>*/}
-      {/*  </FlexContainer>*/}
-      {/*  <p*/}
-      {/*    className={css`*/}
-      {/*      font-family: "Gilroy Light", sans-serif;*/}
+      {/*  ABOUT SECTION*/}
+      <Section>
+        <div className="about">
+          <Title title="ABOUT ME" />
+          <FlexContainer justifyContent="flex-end">
+            <SectionText>
+              UI/UX дизайнер с опытом работы разработчиком и IT аналитиком.
+              Небольшие знания Java, JS, CSS, HTML и прочего дают мне
+              возможность проектировать дизайн, наиболее продуктивный и
+              жизнеспособный как для пользователей так и для разработчиков.
+              Хорошо рисую от руки и имею аналитический склад ума. Считаю, что
+              дизайн это не красивая картинка, а решение задачи клиента в первую
+              очередь. Хороший дизайн должен быть простым, понятным и легким.
+              Адепт минимализма во всем. Бакалавр ВТиПО Казахстансокго
+              университета и Postgraduate certificate по Advanced Computing with
+              Management Лондонсокго университета (топ 30 мира) King's College
+              London. Владею английским языком на уровне IELTS 6.5+ (сертификат
+              получал еще до обучения в Лондоне, так что возможно уже выше).
+              Имею сертификат из Michigan University по Qualitative
+              Interviewing. Люблю как творчество, так и технологии, логику,
+              аналитику. Поэтому и решил развиваться именно в UX/UI дизайне.
+              Сильно мотивирован развиваться и мечтаю в будущем разрабатывать
+              дизайн, который повлияет на весь Мир.
+            </SectionText>
+          </FlexContainer>
+          <p
+            className={css`
+              font-family: "Gilroy Light", sans-serif;
 
-      {/*      font-size: 24px;*/}
-      {/*      line-height: 29px;*/}
-      {/*    `}*/}
-      {/*  >*/}
-      {/*    Дизайн – это не только о создании продуктов, но и о создании будущего,*/}
-      {/*    в котором вы хотите жить.*/}
-      {/*  </p>*/}
-      {/*  <FlexContainer*/}
-      {/*    justifyContent="space-between"*/}
-      {/*    margin={"100px 0 0 "}*/}
-      {/*    className={css`*/}
-      {/*      gap: 74px;*/}
-      {/*    `}*/}
-      {/*  >*/}
-      {/*    <WorkBlock>*/}
-      {/*      <h3>I WORK</h3>*/}
-      {/*      <p>*/}
-      {/*        I'm a 24 y/o UX/UI Designer based in Kazakhstan. Adept of*/}
-      {/*        minimalism, accuracy, cleanliness and lightness.*/}
-      {/*      </p>*/}
-      {/*    </WorkBlock>*/}
-      {/*    <WorkBlock>*/}
-      {/*      <h3>I WORK</h3>*/}
-      {/*      <p>*/}
-      {/*        I'm a 24 y/o UX/UI Designer based in Kazakhstan. Adept of*/}
-      {/*        minimalism, accuracy, cleanliness and lightness.*/}
-      {/*      </p>*/}
-      {/*    </WorkBlock>*/}
-      {/*    <WorkBlock>*/}
-      {/*      <h3>I WORK</h3>*/}
-      {/*      <p>*/}
-      {/*        I'm a 24 y/o UX/UI Designer based in Kazakhstan. Adept of*/}
-      {/*        minimalism, accuracy, cleanliness and lightness.*/}
-      {/*      </p>*/}
-      {/*    </WorkBlock>*/}
-      {/*  </FlexContainer>*/}
-      {/*  <FlexContainer justifyContent="flex-end">*/}
-      {/*    <Link*/}
-      {/*      to="/about"*/}
-      {/*      className={css`*/}
-      {/*        font-family: "Gilroy Light", sans-serif;*/}
-      {/*        font-size: 18px;*/}
-      {/*        line-height: 22px;*/}
-      {/*        color: #6191ef;*/}
-      {/*        text-decoration: none;*/}
-      {/*        cursor: pointer;*/}
-      {/*        margin-top: 50px;*/}
-      {/*      `}*/}
-      {/*    >*/}
-      {/*      More about me ->*/}
-      {/*    </Link>*/}
-      {/*  </FlexContainer>*/}
-      {/*</Section>*/}
-      {/*/!*  END ABOUT SECTION*!/*/}
+              font-size: 24px;
+              line-height: 29px;
+            `}
+          >
+            Дизайн – это не только о создании продуктов, но и о создании
+            будущего, в котором вы хотите жить.
+          </p>
+          <FlexContainer
+            justifyContent="space-between"
+            margin={"100px 0 0 "}
+            flexWrap="wrap"
+          >
+            <WorkBlock>
+              <h3>I WORK</h3>
+              <p>
+                I'm a 24 y/o UX/UI Designer based in Kazakhstan. Adept of
+                minimalism, accuracy, cleanliness and lightness.
+              </p>
+            </WorkBlock>
+            <WorkBlock>
+              <h3>I WORK</h3>
+              <p>
+                I'm a 24 y/o UX/UI Designer based in Kazakhstan. Adept of
+                minimalism, accuracy, cleanliness and lightness.
+              </p>
+            </WorkBlock>
+            <WorkBlock>
+              <h3>I WORK</h3>
+              <p>
+                I'm a 24 y/o UX/UI Designer based in Kazakhstan. Adept of
+                minimalism, accuracy, cleanliness and lightness.
+              </p>
+            </WorkBlock>
+          </FlexContainer>
+          <FlexContainer justifyContent="flex-end">
+            <Link
+              to="/about"
+              className={css`
+                font-family: "Gilroy Light", sans-serif;
+                font-size: 18px;
+                line-height: 22px;
+                color: #6191ef;
+                text-decoration: none;
+                cursor: pointer;
+                margin-top: 50px;
+              `}
+            >
+              More about me ->
+            </Link>
+          </FlexContainer>
+        </div>
+      </Section>
+      {/*  END ABOUT SECTION*/}
 
-      {/*/!*  PROJECTS*!/*/}
-      {/*<Section>*/}
-      {/*  <Title title="SOME OF my" withIcon={false} />*/}
-      {/*  <Title title="projects" margin="0 0 0 100px" />*/}
-      {/*  <FlexContainer justifyContent="flex-end">*/}
-      {/*    <SectionText>*/}
-      {/*      Я специализируюсь на разработке сложных интерфейсов мобильных и веб*/}
-      {/*      приложений, дэшбордов, систем управления и п.р. Но при желании*/}
-      {/*      справлюсь и с сайтами, лендингами а иногда даже логотипами и*/}
-      {/*      визуалами.*/}
-      {/*    </SectionText>*/}
-      {/*  </FlexContainer>*/}
-      {/*  <FlexContainer style={{ justifyContent: "space-between" }}>*/}
-      {/*    <div*/}
-      {/*      className={css`*/}
-      {/*        width: 550px;*/}
-      {/*        height: 600px;*/}
-      {/*        position: relative;*/}
-      {/*        overflow: hidden;*/}
+      {/*  PROJECTS*/}
+      <Section>
+        <Title title="SOME OF my" withIcon={false} />
+        <Title title="projects" margin="0 0 0 60px" />
+        <FlexContainer justifyContent="flex-end">
+          <SectionText>
+            Я специализируюсь на разработке сложных интерфейсов мобильных и веб
+            приложений, дэшбордов, систем управления и п.р. Но при желании
+            справлюсь и с сайтами, лендингами а иногда даже логотипами и
+            визуалами.
+          </SectionText>
+        </FlexContainer>
+        <div className="projects">
+          <FlexContainer justifyContent="space-between" style={{ gap: 25 }}>
+            <div className="image-block">
+              <GatsbyImage
+                alt={image.title}
+                image={image.image.gatsbyImageData}
+                className={css`
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                `}
+              />
 
-      {/*        & .mask {*/}
-      {/*          position: absolute;*/}
-      {/*          top: 0;*/}
-      {/*          left: 0;*/}
-      {/*          background-color: rgba(0, 0, 0, 0.2);*/}
-      {/*          width: 100%;*/}
-      {/*          height: 100%;*/}
-      {/*          opacity: 0;*/}
-      {/*          z-index: 10;*/}
-      {/*          pointer-events: none;*/}
-      {/*          transition: all 0.2s linear;*/}
-      {/*          display: flex;*/}
-      {/*          justify-content: center;*/}
-      {/*          align-items: center;*/}
+              <div className="mask">
+                <Link to={`/${slug}`}>visit project</Link>
+              </div>
+            </div>
 
-      {/*          & a {*/}
-      {/*            color: #fff;*/}
-      {/*          }*/}
-      {/*        }*/}
+            <div
+              className={css`
+                width: 600px;
+              `}
+            >
+              {tabs.map((tab, i) => (
+                <Tab
+                  key={tab.id}
+                  onClick={() => handleClick(i)}
+                  className={i === activeTab ? "selected" : ""}
+                >
+                  <div className={i === activeTab ? "active" : ""}>
+                    <ArrowRight />
+                    {tab.title}
+                  </div>
+                </Tab>
+              ))}
+            </div>
+          </FlexContainer>
+        </div>
+        <div className="mobile-projects">
+          {tabs.map((tab, i) => (
+            <div key={tab.id}>
+              <Tab
+                onClick={() => handleClick(i)}
+                className={i === activeTab ? "selected" : ""}
+              >
+                <div className={i === activeTab ? "active" : ""}>
+                  <ArrowRight />
+                  {tab.title}
+                </div>
+              </Tab>
+              <Collapse isOpen={i === activeTab}>
+                <div className="inner-info">
+                  <p className="descr">
+                    collapsed contentqw eqw e qwe wqe wq eqw ewq e qwe wqe wqe
+                    wqe wqe wq eqe qe wq e
+                  </p>
+                  <div className="inner-info__img">
+                    <GatsbyImage
+                      alt={image.title}
+                      image={tab.image.gatsbyImageData}
+                      className={css`
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                      `}
+                    />
+                  </div>
+                  <p className="link">
+                    <Link to={`/${slug}`}>Read more</Link>
+                  </p>
+                </div>
+              </Collapse>
+            </div>
+          ))}
+        </div>
+        <FlexContainer justifyContent="flex-end">
+          <MoreLink href="https://behance.net/baiburin_1" target="_blank">
+            More projects ->
+          </MoreLink>
+        </FlexContainer>
+      </Section>
 
-      {/*        &:hover {*/}
-      {/*          & .mask {*/}
-      {/*            opacity: 1;*/}
-      {/*            pointer-events: all;*/}
-      {/*          }*/}
-      {/*        }*/}
-      {/*      `}*/}
-      {/*    >*/}
-      {/*      <GatsbyImage*/}
-      {/*        alt={image.title}*/}
-      {/*        image={image.image.gatsbyImageData}*/}
-      {/*        className={css`*/}
-      {/*          width: 100%;*/}
-      {/*          height: 100%;*/}
-      {/*          object-fit: cover;*/}
-      {/*        `}*/}
-      {/*      />*/}
+      {/*  END PROJECTS*/}
 
-      {/*      <div className="mask">*/}
-      {/*        <Link to={`/${slug}`}>visit project</Link>*/}
-      {/*      </div>*/}
-      {/*    </div>*/}
-
-      {/*    <div*/}
-      {/*      className={css`*/}
-      {/*        width: 600px;*/}
-      {/*      `}*/}
-      {/*    >*/}
-      {/*      {tabs.map((tab, i) => (*/}
-      {/*        <Tab*/}
-      {/*          key={tab.id}*/}
-      {/*          onClick={() => handleClick(i)}*/}
-      {/*          className={css`*/}
-      {/*            background: ${i === activeTab*/}
-      {/*              ? "rgba(255, 255, 255, 0.08)"*/}
-      {/*              : "none"};*/}
-      {/*          `}*/}
-      {/*        >*/}
-      {/*          <div className={i === activeTab ? "active" : ""}>*/}
-      {/*            <ArrowRight />*/}
-      {/*            {tab.title}*/}
-      {/*          </div>*/}
-      {/*        </Tab>*/}
-      {/*      ))}*/}
-      {/*      <FlexContainer justifyContent="flex-end">*/}
-      {/*        <MoreLink href="https://behance.net/baiburin_1" target="_blank">*/}
-      {/*          More projects ->*/}
-      {/*        </MoreLink>*/}
-      {/*      </FlexContainer>*/}
-      {/*    </div>*/}
-      {/*  </FlexContainer>*/}
-      {/*</Section>*/}
-      {/*/!*  END PROJECTS*!/*/}
-      {/*<Section>*/}
-      {/*  <Title title="SERVICES" margin="0 0 0 100px" />*/}
-      {/*  <div>*/}
-      {/*    <ServicesItem>*/}
-      {/*      <span>01</span>*/}
-      {/*      <p>websites</p>*/}
-      {/*    </ServicesItem>*/}
-      {/*    <ServicesItem>*/}
-      {/*      <span>02</span>*/}
-      {/*      <p>E-commerce</p>*/}
-      {/*    </ServicesItem>*/}
-      {/*    <ServicesItem>*/}
-      {/*      <span>03</span>*/}
-      {/*      <p>Mobile apps</p>*/}
-      {/*    </ServicesItem>*/}
-      {/*    <ServicesItem>*/}
-      {/*      <span>04</span>*/}
-      {/*      <p>Logo and branding</p>*/}
-      {/*    </ServicesItem>*/}
-      {/*  </div>*/}
-      {/*  <div>*/}
-      {/*    <FlexContainer justifyContent="space-between" margin="25px 0 0">*/}
-      {/*      <ServicesType>brifing</ServicesType>*/}
-      {/*      <ServicesType>UX/Analytics</ServicesType>*/}
-      {/*      <ServicesType>Design Concept</ServicesType>*/}
-      {/*      <ServicesType>Design all pages</ServicesType>*/}
-      {/*      <ServicesType>responsiveness</ServicesType>*/}
-      {/*      <ServicesType>development</ServicesType>*/}
-      {/*    </FlexContainer>*/}
-      {/*  </div>*/}
-      {/*</Section>*/}
+      <Section>
+        <Title className="services" title="SERVICES" margin="0 0 0 100px" />
+        <div>
+          <ServicesItem>
+            <span>01</span>
+            <p>websites</p>
+          </ServicesItem>
+          <ServicesItem>
+            <span>02</span>
+            <p>E-commerce</p>
+          </ServicesItem>
+          <ServicesItem>
+            <span>03</span>
+            <p>Mobile apps</p>
+          </ServicesItem>
+          <ServicesItem>
+            <span>04</span>
+            <p>Logo and branding</p>
+          </ServicesItem>
+        </div>
+        <div>
+          <FlexContainer
+            justifyContent="space-between"
+            margin="25px 0 0"
+            flexWrap="wrap"
+            className="services"
+          >
+            <ServicesType>brifing</ServicesType>
+            <ServicesType>UX/Analytics</ServicesType>
+            <ServicesType>Design Concept</ServicesType>
+            <ServicesType>Design all pages</ServicesType>
+            <ServicesType>responsiveness</ServicesType>
+            <ServicesType>development</ServicesType>
+          </FlexContainer>
+        </div>
+      </Section>
     </Layout>
   );
 };

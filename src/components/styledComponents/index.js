@@ -4,6 +4,7 @@ import { colors } from "../../constants/colors";
 export const FlexContainer = styled.div`
   display: flex;
   flex-direction: ${(props) => props.direction || "row"};
+  flex-wrap: ${(props) => props.flexWrap || "nowrap"};
   justify-content: ${(props) => props.justifyContent || "flex-start"};
   align-items: ${(props) => props.alignItems || "flex-start"};
   padding: ${(props) => props.padding || 0};
@@ -12,9 +13,103 @@ export const FlexContainer = styled.div`
   svg:not(last-child) {
     margin-bottom: 25px;
   }
+
+  &.services {
+    @media (max-width: 865px) {
+      justify-content: flex-start;
+    }
+  }
 `;
 export const Section = styled.section`
   margin-top: 100px;
+  & .mobile-projects {
+    @media (min-width: 686px) {
+      display: none;
+    }
+    & .collapse-css-transition {
+      transition: height 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    & .inner-info {
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 15px 10px;
+
+      & p {
+        margin: 0;
+      }
+
+      & .inner-info__img {
+        max-width: 100%;
+        height: 200px;
+      }
+
+      & .descr {
+        margin-bottom: 10px;
+      }
+
+      & .link {
+        text-align: right;
+        margin-top: 10px;
+        & a {
+          text-decoration: none;
+          font-family: "Gilroy Light", sans-serif;
+          font-size: 18px;
+          line-height: 22px;
+          color: #6191ef;
+          cursor: pointer;
+          margin-top: 50px;
+        }
+      }
+    }
+  }
+  & .projects {
+    @media (max-width: 685px) {
+      display: none;
+    }
+    & .image-block {
+      width: 550px;
+      height: 600px;
+      position: relative;
+      overflow: hidden;
+
+      @media (max-width: 990px) {
+        height: 450px;
+      }
+
+      & .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.2);
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: 10;
+        pointer-events: none;
+        transition: all 0.2s linear;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & a {
+          color: #fff;
+        }
+      }
+
+      &:hover {
+        & .mask {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+
+      @media (max-width: 990px) {
+      }
+    }
+
+    @media (max-width: 990px) {
+    }
+  }
 `;
 
 export const HeroText = styled.span`
@@ -64,6 +159,7 @@ export const RelativeBlock = styled.div`
         position: absolute;
         width: 100%;
         height: 100%;
+        z-index: -1;
 
         & p {
           font-family: "Gilroy Light", sans-serif;
@@ -162,8 +258,8 @@ export const BlockTitle = styled.h3`
 
 export const WorkBlock = styled.div`
   font-family: "Gilroy Light", sans-serif;
+  width: 350px;
   h3 {
-    margin: 10px 0 0 100px;
     font-weight: 600;
     font-size: 24px;
     line-height: 29px;
@@ -173,6 +269,9 @@ export const WorkBlock = styled.div`
     margin: 10px 0;
     font-size: 16px;
     line-height: 19px;
+  }
+  @media (max-width: 730px) {
+    width: 100%;
   }
 `;
 
@@ -204,6 +303,15 @@ export const Tab = styled.div`
   letter-spacing: 0.04em;
   cursor: pointer;
   transition: all 0.1s linear;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  &.selected {
+    background: rgba(255, 255, 255, 0.08);
+  }
 
   &:hover {
     background: rgba(255, 255, 255, 0.08);
@@ -240,6 +348,8 @@ export const ServicesItem = styled.div`
   align-items: flex-end;
   font-family: "Gilroy Light", sans-serif;
   border-bottom: 1px solid #c5cad0;
+  height: 100px;
+  margin-bottom: 20px;
 
   overflow: hidden;
   & span {
@@ -250,6 +360,12 @@ export const ServicesItem = styled.div`
     text-transform: uppercase;
     margin-right: 96px;
     transform: translateY(35%);
+    @media (max-width: 575px) {
+      width: 115px;
+      min-width: 0;
+      font-size: 100px;
+      margin-right: 24px;
+    }
   }
   & p {
     font-weight: 300;
@@ -262,10 +378,14 @@ export const ServicesItem = styled.div`
     color: #c5cad0;
     margin: 0;
     padding-bottom: 26px;
+    @media (max-width: 575px) {
+      font-size: 14px;
+    }
   }
 `;
 
-export const ServicesType = styled.div`
+export const ServicesType = styled.span`
+  margin-bottom: 10px;
   padding: 10px;
   color: #c5cad0;
   border: 1px solid #c5cad0;
@@ -277,4 +397,9 @@ export const ServicesType = styled.div`
 
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  margin-right: 5px;
+
+  @media (max-width: 575px) {
+    font-size: 10px;
+  }
 `;
